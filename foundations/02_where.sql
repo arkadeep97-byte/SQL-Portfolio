@@ -1,36 +1,70 @@
--- =====================================
--- SQL FOUNDATIONS: WHERE Clause
--- =====================================
--- Purpose: Filter rows based on conditions
+#WHERE Clause:
+#-------------
+#The WHERE clause is used to filter records (rows of data)
 
--- Example 1: Simple condition
-SELECT * 
-FROM employees
+#It's going to extract only those records that fulfill a specified condition.
+
+# So basically if we say "Where name is = 'Alex' - only rows were the name = 'Alex' will return
+# So this is only effecting the rows, not the columns
+
+
+#Let's take a look at how this looks
+SELECT *
+FROM employee_salary
 WHERE salary > 50000;
 
--- Example 2: Multiple conditions (AND)
 SELECT *
-FROM employees
-WHERE salary > 50000 
-  AND department = 'Sales';
+FROM employee_salary
+WHERE salary >= 50000;
 
--- Example 3: Multiple conditions (OR)
 SELECT *
-FROM employees
-WHERE department = 'Sales' 
-   OR department = 'Marketing';
+FROM employee_demographics
+WHERE gender = 'Female';
 
--- Example 4: IN operator
-SELECT *
-FROM employees
-WHERE department IN ('Sales', 'Marketing', 'IT');
 
--- Example 5: BETWEEN operator
+#We can also return rows that do have not "Scranton"
 SELECT *
-FROM employees
-WHERE salary BETWEEN 40000 AND 60000;
+FROM employee_demographics
+WHERE gender != 'Female';
 
--- Example 6: LIKE operator (pattern matching)
+
+#We can use WHERE clause with date value also
 SELECT *
-FROM employees
-WHERE first_name LIKE 'J%';  -- Names starting with J
+FROM employee_demographics
+WHERE birth_date > '1985-01-01';
+
+-- Here '1990-01-01' is the default data formate in MySQL.
+-- There are other date formats as well that we will talk about in a later lesson.
+
+
+# LIKE STATEMENT
+
+-- two special characters a % and a _
+
+-- % means anything
+SELECT *
+FROM employee_demographics
+WHERE first_name LIKE 'a%';
+
+-- _ means a specific value
+SELECT *
+FROM employee_demographics
+WHERE first_name LIKE 'a__';
+
+
+SELECT *
+FROM employee_demographics
+WHERE first_name LIKE 'a___%';
+
+
+
+
+
+
+
+
+
+
+
+
+
